@@ -1,0 +1,20 @@
+- op: replace
+  path: /spec/rules/0/host
+  value: api-stage.<domain>
+
+
+# Ejemplo Let's Encrypt SSL 
+# TLS
+- op: replace
+  path: /spec/tls/0/hosts/0
+  value: api-stage.cachac.kubelabs.dev
+
+- op: add
+  path: /metadata/annotations/cert-manager.io~1issuer
+  value: letsencrypt-prod # letsencrypt-staging
+
+# test-no ssl
+# - op: remove
+#   path: /metadata/annotations/cert-manager.io~1issuer
+# - op: remove
+#   path: /spec/tls
